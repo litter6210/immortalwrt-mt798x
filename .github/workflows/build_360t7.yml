@@ -1,0 +1,38 @@
+name: build
+
+on:
+  #pull_request:
+  push:
+    branches: 
+      - openwrt-21.02
+
+jobs:
+  push:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          sudo apt update -y
+          sudo apt install -y build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils zlib1g-dev unzip
+      - name: Install feeds
+        run: |
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+      - name: Prepare config
+        run: |
+          rm -rf ./.config*
+          cp -f defconfig/mt7981-ax3000.config .config
+          make defconfig
+          make -j$(nproc) download
+      - name: Build Openwrt
+        run: make -j$(nproc) V=s
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: 360t7
+          path: bin/targets
