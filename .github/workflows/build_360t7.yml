@@ -2,7 +2,7 @@ name: build
 
 on:
   #pull_request:
-  #workflow_dispatch:
+  workflow_dispatch:
   push:
     branches: 
       - openwrt-21.02
