@@ -28,8 +28,9 @@ jobs:
         run: |
           rm -rf ./.config*
           cp -f defconfig/mt7981-ax3000.config .config
-          sed -i 's/CONFIG_TARGET_MULTI_PROFILE=y/CONFIG_TARGET_MULTI_PROFILE=n/g' .config
+          sed -i 's/CONFIG_TARGET_MULTI_PROFILE=y/# CONFIG_TARGET_MULTI_PROFILE is not set/g' .config
           sed -i 's/CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_mt7981-360-t7=y/CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE_mt7981-360-t7=n/g' .config
+          cat .config
           make defconfig
           make -j$(nproc) download
       - name: Build Openwrt
