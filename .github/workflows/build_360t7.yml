@@ -34,6 +34,7 @@ jobs:
           sed -i 's/^[ \t]*//g' ./.config
           cat .config
           make defconfig
+          cat .config
           make -j$(nproc) download
       - name: Build Openwrt
         run: make -j$(nproc) V=s
