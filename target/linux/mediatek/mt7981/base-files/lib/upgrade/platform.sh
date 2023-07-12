@@ -8,7 +8,10 @@ platform_do_upgrade() {
 	*x3000* |\
 	*xe3000* |\
 	*mt2500* |\
+	*zr-3020* |\
 	*360,t7* |\
+	*cetron,ct3003* |\
+	*jcg,q30* |\
 	*snand*)
 		nand_do_upgrade "$1"
 		;;
@@ -34,7 +37,10 @@ platform_check_image() {
 	*x3000* |\
 	*xe3000* |\
 	*mt2500* |\
+	*zr-3020* |\
 	*360,t7* |\
+	*cetron,ct3003* |\
+	*jcg,q30* |\
 	*snand* |\
 	*emmc*)
 		# tar magic `ustar`
