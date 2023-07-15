@@ -35,7 +35,6 @@ jobs:
           sed -i '/^CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y/d' .config
           sed -i '/^CONFIG_PACKAGE_miniupnpd=y/d' .config
           echo CONFIG_TARGET_mediatek_mt7981_DEVICE_mt7981-360-t7-108M=y >> .config
-          echo CONFIG_DEFAULT_luci-app-filetransfer=n >> .config
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
           cat .config
