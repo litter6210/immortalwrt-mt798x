@@ -46,4 +46,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: 360t7
-          path: bin/targets/mediatek/mt7981/immortalwrt-mediatek-mt7981-mt7981-360-t7-108M-squashfs-sysupgrade.bin
+          path: bin/targets
