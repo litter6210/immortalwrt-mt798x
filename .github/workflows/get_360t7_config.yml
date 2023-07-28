@@ -1,0 +1,47 @@
+name: build
+
+on:
+  #pull_request:
+  workflow_dispatch:
+  #push:
+  #  branches: 
+  #    - openwrt-21.02
+
+jobs:
+  push:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          sudo apt update -y
+          sudo apt install -y build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils zlib1g-dev unzip
+      - name: Install feeds
+        run: |
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+      - name: Prepare config
+        run: |
+          rm -rf ./.config*
+          cp -f defconfig/mt7981-ax3000.config .config
+          sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
+          sed -i '/^CONFIG_TARGET_MULTI_PROFILE=y/d' .config
+          sed -i '/^CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE.*/d' .config
+          sed -i '/^CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE.*/d' .config
+          sed -i '/^CONFIG_PACKAGE_luci-app-upnp=y/d' .config
+          sed -i '/^CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y/d' .config
+          sed -i '/^CONFIG_PACKAGE_miniupnpd=y/d' .config
+          echo CONFIG_TARGET_mediatek_mt7981_DEVICE_mt7981-360-t7-108M=y >> .config
+          echo CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_mt7981-360-t7="" >> .config
+          echo CONFIG_PACKAGE_luci-app-filetransfer=n >> .config
+          sed -i 's/^[ \t]*//g' ./.config
+          make defconfig
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: 360t7_config
+          path: .config
