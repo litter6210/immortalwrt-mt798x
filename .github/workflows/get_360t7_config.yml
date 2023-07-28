@@ -1,4 +1,4 @@
-name: build
+name: get_360t7_config
 
 on:
   #pull_request:
