@@ -1,4 +1,4 @@
-name: build
+name: build_360t7
 
 on:
   #pull_request:
