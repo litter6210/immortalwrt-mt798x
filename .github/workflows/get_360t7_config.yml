@@ -29,14 +29,14 @@ jobs:
           rm -rf ./.config*
           cp -f defconfig/mt7981-ax3000.config .config
           sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
-          sed -i '/^CONFIG_TARGET_MULTI_PROFILE=y/d' .config
-          sed -i '/^CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE.*/d' .config
-          sed -i '/^CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE.*/d' .config
+          #sed -i '/^CONFIG_TARGET_MULTI_PROFILE=y/d' .config
+          #sed -i '/^CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE.*/d' .config
+          #sed -i '/^CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE.*/d' .config
           sed -i '/^CONFIG_PACKAGE_luci-app-upnp=y/d' .config
           sed -i '/^CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y/d' .config
           sed -i '/^CONFIG_PACKAGE_miniupnpd=y/d' .config
-          echo CONFIG_TARGET_mediatek_mt7981_DEVICE_mt7981-360-t7-108M=y >> .config
-          echo CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_mt7981-360-t7="" >> .config
+          #echo CONFIG_TARGET_mediatek_mt7981_DEVICE_mt7981-360-t7-108M=y >> .config
+          #echo CONFIG_TARGET_DEVICE_PACKAGES_mediatek_mt7981_DEVICE_mt7981-360-t7="" >> .config
           echo CONFIG_PACKAGE_luci-app-filetransfer=n >> .config
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
