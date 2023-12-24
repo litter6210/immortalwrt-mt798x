@@ -3,7 +3,7 @@ name: build_360t7
 on:
   #pull_request:
   workflow_dispatch:
-  #push:
+  push:
   #  branches: 
   #    - openwrt-21.02
 
