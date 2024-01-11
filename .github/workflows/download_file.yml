@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
         url: 
-          description: 'url'     
+          description: 'download url'     
           required: false
-          default: 'no'
+          default: ''
   #push:
   #  branches: 
   #    - openwrt-21.02
