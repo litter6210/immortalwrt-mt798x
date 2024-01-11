@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install dependencies
+      - name: download file
         run: |
           sudo apt update -y
           sudo apt install -y wget
