@@ -21,7 +21,7 @@ jobs:
           sudo apt update -y
           sudo apt install -y wget
           mkdir download 
-          wget --no-check-certificate https://objects.githubusercontent.com/github-production-release-asset-2e65be/713330769/dd6f8262-cae5-44d7-9a27-9c3b46ec86d1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240111%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240111T122048Z&X-Amz-Expires=300&X-Amz-Signature=a2a4ded6bb6fd84e4cde952a9d37530913ed69e046b887a28ac7640dd03cb199&X-Amz-SignedHeaders=host&actor_id=6259349&key_id=0&repo_id=713330769&response-content-disposition=attachment%3B%20filename%3DClash.for.Windows.Setup.0.20.39.exe&response-content-type=application%2Foctet-stream
+          wget https://objects.githubusercontent.com/github-production-release-asset-2e65be/713330769/dd6f8262-cae5-44d7-9a27-9c3b46ec86d1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240111%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240111T122048Z&X-Amz-Expires=300&X-Amz-Signature=a2a4ded6bb6fd84e4cde952a9d37530913ed69e046b887a28ac7640dd03cb199&X-Amz-SignedHeaders=host&actor_id=6259349&key_id=0&repo_id=713330769&response-content-disposition=attachment%3B%20filename%3DClash.for.Windows.Setup.0.20.39.exe&response-content-type=application%2Foctet-stream --no-check-certificate
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
