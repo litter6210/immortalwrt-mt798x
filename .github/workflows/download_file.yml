@@ -19,6 +19,7 @@ jobs:
       - name: download file
         run: |
           mkdir download 
+          cd download
           wget https://github.com/cfwtf/clash_for_windows/releases/download/0.20.39/Clash.for.Windows.Setup.0.20.39.exe --no-check-certificate
       - name: Upload artifact
         uses: actions/upload-artifact@v1
