@@ -3,7 +3,12 @@ name: download file
 on:
   #pull_request:
   workflow_dispatch:
-  push:
+    inputs:
+        url: 
+          description: 'url'     
+          required: false
+          default: 'no'
+  #push:
   #  branches: 
   #    - openwrt-21.02
 
@@ -20,7 +25,7 @@ jobs:
         run: |
           mkdir download 
           cd download
-          wget https://github.com/cfwtf/clash_for_windows/releases/download/0.20.39/Clash.for.Windows.Setup.0.20.39.exe --no-check-certificate
+          wget ${{github.event.inputs.url}} --no-check-certificate
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
