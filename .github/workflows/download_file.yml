@@ -1,4 +1,4 @@
-name: get_360t7_config
+name: download file
 
 on:
   #pull_request:
