@@ -38,6 +38,7 @@ jobs:
           echo CONFIG_TARGET_mediatek_mt7981_DEVICE_mt7981-360-t7-108M=y >> .config
           echo CONFIG_TARGET_PACKAGES_mediatek_mt7981_DEVICE_mt7981-360-t7="" >> .config
           echo CONFIG_PACKAGE_luci-app-filetransfer=n >> .config
+          echo CONFIG_PACKAGE_luci-app-eqos-mtk=n >> .config
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
           cat .config
