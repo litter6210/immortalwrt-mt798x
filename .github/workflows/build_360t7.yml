@@ -46,7 +46,7 @@ jobs:
       - name: Build Openwrt
         run: make -j$(nproc) V=s
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: 360t7
           path: bin/targets
